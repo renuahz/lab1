@@ -1,0 +1,49 @@
+#include <iostream>
+#include <cmath>
+#include <iomanip>
+
+int main() {
+    double a, b;
+    int n;
+
+    // Введення значень a, b і n з клавіатури
+    std::cout << "Введіть значення a: ";
+    std::cin >> a;
+
+    std::cout << "Введіть значення b: ";
+    std::cin >> b;
+
+    std::cout << "Введіть ціле число n: ";
+    std::cin >> n;
+
+    // Вивід заголовка таблиці
+    std::cout << "x\tf(x)" << std::endl;
+
+    double maxResult = -INFINITY;
+    double minResult = INFINITY;
+    double maxX, minX;
+
+    // Табулювання та пошук максимального та мінімального значень функції
+    for (double x = a; x <= b; x += 0.01) {
+        double fx = (x - tan(x)) * sqrt(x);
+
+        // Оновлення максимального та мінімального значення
+        if (fx > maxResult) {
+            maxResult = fx;
+            maxX = x;
+        }
+        if (fx < minResult) {
+            minResult = fx;
+            minX = x;
+        }
+
+        // Виведення значення функції
+        std::cout << std::fixed << std::setprecision(2) << x << "\t" << fx << std::endl;
+    }
+
+    // Виведення результатів максимального та мінімального значень
+    std::cout << "Максимальне значення: " << maxResult << " (x = " << maxX << ")" << std::endl;
+    std::cout << "Мінімальне значення: " << minResult << " (x = " << minX << ")" << std::endl;
+
+    return 0;
+}
